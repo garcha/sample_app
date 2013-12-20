@@ -1,7 +1,15 @@
 <% provide(:title, "Home") %>
-<h1>Sample App</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="center hero-unit">
+	<h1>Welcome to the Sample App</h1>
+
+	<h2>
+		This is the home page for
+		Jaspreet Garcha's Sample app
+	</h2>
 
 
-<%= link_to "About", "/static_pages/about" %>
-<%= link_to "Help", "/static_pages/help" %>
+<%= link_to "About", about_path, class: "btn btn-large btn-primary" %>
+<%= link_to "Help", help_path, class: "btn btn-large btn-primary"%>
+
+</div>
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://jaspreetgarcha.com' %>

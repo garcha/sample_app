@@ -24,6 +24,11 @@ describe "User pages" do
       it "should not create a user" do
         expect { click_button submit }.not_to change(User, :count)
       end
+      before {click_button submit}
+
+      it {should have_title("Sign Up")}
+      it {should have_content('error')}
+
     end
 
     describe "with valid information" do

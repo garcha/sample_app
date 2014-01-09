@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+    render 'new'
   end
   
 end

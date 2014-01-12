@@ -43,7 +43,22 @@ describe "User pages" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
     end
-  end
+
+    describe "edit" do
+	let(:user) { FactoryGirl.create(:user) }
+	before { visit edit_user_path(user) }
+
+	describe "page" do
+	  it { should have_content("Update your profile") }
+	  it { should have_title("Edit user") }
+  	  it { should have_link('Change', href: 'http://gravatar.com/emails') }
+	end
+
+	describe "with invalid information" do 
+	  before { click_button "Save change" }
+
+	  it { should have_content('error')}
+	end
+      end
+    end	
 end
-
-

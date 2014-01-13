@@ -14,9 +14,9 @@ def sign_in(user, options={})
 		cookiers[:remember_token] = remember_token
 		user.update_attribute(:remember_toekn, User.encrypt(remember_token))
 	else
-		visit sign_path
-		fill_in "Email", 		with: user.Email
-		fill_in "Password", 	with: user.Password
-		click_button "Sign in"
+		visit signin_path
+		fill_in "Email", 		with: user.email
+		fill_in "Password", 	with: user.password
+		click_button "Sign In"
 	end
 end

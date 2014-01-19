@@ -59,8 +59,8 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-#gem 'binding_of_caller'
-#gem 'better_errors'
+gem 'binding_of_caller'
+gem 'better_errors'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'

@@ -74,13 +74,13 @@ describe "Authentication" do
 					it { should have_title('Sign In') } 
 			  end
 
-			describe "when attempting to visit a protected page" do
-				before do
-					visit edit_user_path(user)
-					fill_in "Email", 					with: user.email
-					fill_in "Password",				with: user.password
-					click_button "Sign In"
-				end
+  			describe "when attempting to visit a protected page" do
+  				before do
+  					visit edit_user_path(user)
+  					fill_in "Email", 					with: user.email
+  					fill_in "Password",				with: user.password
+  					click_button "Sign In"
+  				end
 
 				describe "after signing in" do
 
@@ -88,7 +88,20 @@ describe "Authentication" do
 						expect(page).to have_title("Edit User")
 					end
 				end
-			end
+
+        describe "in the Microposts controller" do
+
+          describe "submitting to the create action" do
+            before { post microposts_path }
+            specify { expect(response).to redirect_to(signin_path) }
+          end
+
+          describe "submitting to the destroy action" do
+            before { delete micropost_path(FactoryGirl.create(:micropost)) }
+            specify { expect(rdesponse).to redirect_to(signin_path) }
+          end
+        end
+      end
 		end
 
     describe "as non-admin user" do

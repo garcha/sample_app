@@ -9,9 +9,14 @@ SampleApp::Application.routes.draw do
   get '/signin', to: 'sessions#new', as:'/signin'
   delete '/signout', to: 'sessions#destroy', as:'/signout'
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
